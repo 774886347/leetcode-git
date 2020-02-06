@@ -42,7 +42,7 @@ public class PriorityQueue {
         while (childIndex > 0 && tmp > array[parentIndex]) {
             array[childIndex] = array[parentIndex];
             childIndex = parentIndex;
-            parentIndex = parentIndex / 2;
+            parentIndex = (parentIndex - 1) / 2;
         }
         array[childIndex] = tmp;
     }
@@ -51,11 +51,25 @@ public class PriorityQueue {
      * 下沉操作,最大堆，父节点值比子节点小则下沉
      */
     public void downAdjust() {
-
+        int childIndex = 1;
+        int parentIndex = 0;
+        int tmp = array[parentIndex];
+        while (childIndex < size) {
+            if (childIndex + 1 < size && array[childIndex + 1] > array[childIndex]) {
+                childIndex++;
+            }
+            if (tmp >= array[childIndex]) {
+                break;
+            }
+            array[parentIndex] = array[childIndex];
+            parentIndex = childIndex;
+            childIndex = childIndex * 2 + 1;
+        }
+        array[parentIndex] = tmp;
     }
 
     public static void main(String[] args) {
-        PriorityQueue priorityQueue=new PriorityQueue();
+        PriorityQueue priorityQueue = new PriorityQueue();
         priorityQueue.enQueue(3);
         priorityQueue.enQueue(5);
         priorityQueue.enQueue(10);
