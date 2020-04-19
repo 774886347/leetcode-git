@@ -10,7 +10,13 @@ import java.util.List;
  */
 public class Lc51Nqueen {
 
+    public static void main(String[] args) {
+        int a = 2;
+        int b = a++ << ++a + ++a;
+        System.out.println(b);
+    }
 }
+
 class Solution {
     public List<String[]> solveNQueens(int n) {
         List<String[]> res = new ArrayList<>();
@@ -20,8 +26,7 @@ class Solution {
     }
 
     /**
-     *
-     * @param y 棋盘横轴
+     * @param y     棋盘横轴
      * @param cols
      * @param d1
      * @param d2
