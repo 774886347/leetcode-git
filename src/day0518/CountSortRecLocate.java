@@ -24,11 +24,11 @@ public class CountSortRecLocate {
         for (int i = 0; i < array.length; i++) {
             countArray[array[i] - min]++;
         }
-        // 3.统计数组做变形，后面的元素等于前面的元素之和
+        // 3.统计数组做变形，后面的元素等于前面的元素之和(为什么变形的数组能记录元素的准确位置？答因为)
         for (int i = 1; i < countArray.length; i++) {
             countArray[i] += countArray[i - 1];
         }
-        // 4.倒序遍历原始数组，从统计数组找到正确位置，输出到结果数组
+        // 4.倒序遍历原始数组，从统计数组找到正确位置，输出到结果数组(为什么是倒序遍历，有其他方式遍历吗？)
         int[] sortArray = new int[array.length];
         for (int i = array.length - 1; i >= 0; i--) {
             sortArray[countArray[array[i] - min] - 1] = array[i];
