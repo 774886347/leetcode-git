@@ -14,19 +14,23 @@ public class ReviewCountingSort {
                 min = array[i];
             }
         }
-        int d = max - min;
-        int[] countArray = new int[array.length + 1];
-        for (int value : array) {
-            countArray[value - d + 1]++;
+        // 记录当前数字有几个的这个数组，长度比array长度多了一个！为什么要多这一个？
+        // 因为数组是从零开始的，countArray记录的是array元素的相对位置
+        int[] countArray = new int[array.length];
+        for (int i = 0; i < array.length; i++) {
+            // 记录的是相对位置
+            countArray[array[i] - min]++;
         }
-        for (int i = 1; i <= countArray.length; i++) {
+        for (int i = 1; i < countArray.length; i++) {
             countArray[i] += countArray[i - 1];
         }
-        for (int i = array.length; i >= 0; i--) {
-            array[countArray[i]] = array.length + d;
-            countArray[i]--;
+        // 创建一个新的数组存放排序过后的数组
+        int[] sortArray = new int[array.length];
+        for (int i = array.length - 1; i >= 0; i--) {
+            sortArray[countArray[array[i] - min] - 1] = array[i];
+            countArray[array[i] - min]--;
         }
-        return countArray;
+        return sortArray;
     }
 
     public static void main(String[] args) {
