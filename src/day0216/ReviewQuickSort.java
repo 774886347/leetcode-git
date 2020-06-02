@@ -23,6 +23,7 @@ public class ReviewQuickSort {
         int left = startIndex;
         int right = endIndex;
         while (left != right) {
+
             // arr[right] >= pivot -> java.lang.StackOverflowError
             while (left < right && arr[right] > pivot) {
                 right--;

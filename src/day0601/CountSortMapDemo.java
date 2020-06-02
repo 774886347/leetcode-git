@@ -25,11 +25,22 @@ public class CountSortMapDemo {
         for (int i = 0; i < mapValueList.size(); i++) {
             countArray[mapValueList.get(i) - min]++;
         }
-        Map<Integer,Integer> sortMap = new TreeMap<>();
+        Map<Integer, Integer> sortMap = new TreeMap<>();
         for (int i = 0; i < mapValueList.size(); i++) {
 //            countArray[mapValueList.get(i) - min -1]
-
         }
     }
 
+    TreeMap<Integer, Integer> treeMap = new TreeMap();
+
+    public void test() {
+
+        List<Map.Entry<Integer, Integer>> list = new ArrayList<>(treeMap.entrySet());
+
+        list.sort((arg0, arg1) -> arg1.getValue().compareTo(arg0.getValue()));
+
+        for (Map.Entry<Integer, Integer> mapping : list) {
+            System.out.println(mapping.getKey() + " : " + mapping.getValue());
+        }
+    }
 }
